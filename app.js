@@ -11,7 +11,7 @@ betterHackerNewsApp.controller("HackerNewsCtrl", ["$scope", "$firebase",
   		topStories.$loaded().then(function(){
   			//test = topStories[0].$value;
   			//console.log(test);	
-  			for(var i = 0; i < 30; i++){
+  			for(var i = 0; i < 100; i++){
   				//console.log("https://hacker-news.firebaseio.com/v0/item/" + topStories[i].$value);
   				var storyRef = new Firebase("https://hacker-news.firebaseio.com/v0/item/" + topStories[i].$value);
   				//console.log(storyRef);
@@ -21,6 +21,7 @@ betterHackerNewsApp.controller("HackerNewsCtrl", ["$scope", "$firebase",
   				items.push(story);//Adds story objects to items
   			}
   			console.log(items);
+  			$scope.theTime = Math.floor(Date.now()/1000);
   			$scope.stories = items;
   		}).catch(function(error){
   			console.log("Error:", error);

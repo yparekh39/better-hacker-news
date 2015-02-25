@@ -3,17 +3,31 @@
 <head>
 	<link rel="shortcut icon" href="favicon.ico">
 	<script type="text/javascript" src="bower_components/angularjs/angular.js"></script>
+	<script src="bower_components/angular-material/angular-material.min.js"></script>
 	<!-- Firebase -->
 	<script src="bower_components/firebase/firebase.js"></script>
 	<!-- AngularFire -->
 	<script src="bower_components/angularfire/dist/angularfire.js"></script>
+
 	<script src="app.js"></script>
 	<title>Better Hacker News</title>
 	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
 </head>
 <body ng-controller = "HackerNewsCtrl">
-	<ul>
-		<li ng-repeat = "story in stories"><a href={{story.url}}>{{story.title}}</a></li>
+	<md-toolbar class="md-primary" layout="row" layout-align-gt-sm="center center" layout-align-sm="start center">
+		<h2 flex-order="2" class:"header">Better Hacker News</h2>
+	</md-toolbar>
+	<ul layout="column" layout-align="start start">
+		<li ng-repeat = "story in stories">
+			<div class="article" layout="column" layout-align="start start">
+				<a class="title" href={{story.url}}>{{story.title}}</a>
+				<div layout="row" layout-align="start center">
+					<p class="story_data">{{story.score}} Points by {{story.by}}</p>
+					<a href="http://news.ycombinator.com/item?id={{story.id}}">comments</a>
+				</div>
+			</div>
+		</li>
 	</ul>
 </body>
 </html>
